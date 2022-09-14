@@ -3,41 +3,20 @@ import {View,Text,StyleSheet,FlatList,Image} from 'react-native';
 import { ScrollView } from "react-native-gesture-handler";
 import coinlore from "../api/coinlore";
 
-
-
 const DetailScreen=function({navigation}){
-
-
-
-
-    const [result,setResult]=useState(null);
+const [result,setResult]=useState(null);
     const id=navigation.getParam('id');
-
-
     const getResult= async function(id){
         const response=await coinlore.get(id)
         setResult(response.data);
-       
-        
-    }
+       }
     useEffect(function(){
         getResult(id);
-
-
-    },[])
-
-
-
-
+},[])
     if(!result){
-        
         return null;
     }
-
-
-    
-    return <View style={styles.viewStyle}>
-        
+return <View style={styles.viewStyle}>
         <ScrollView>
                 <Image 
                 style={{height:100,width:100,alignSelf:'center'}}
